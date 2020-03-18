@@ -1,0 +1,27 @@
+<html lang="ru">
+    <head>
+        <title>Аккуратнов</title>
+        <meta charset="utf-8">
+    </head>
+
+    <script>
+        document.addEventListener('click', function (event) 
+        {     
+            if (!event.target.matches('.click-me')) return;     
+            event.preventDefault();     
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:8888/", true);
+            xhr.onload = function() {
+                console.log(xhr.response);
+                alert('Количество Пробелов: ' + JSON.parse(xhr.response).numberOfSpaces);
+            };
+            xhr.send(document.getElementById("1").value); 
+        }, false);
+    </script>
+
+    <body>
+        <input id="1" type="text"  size="40"><Br>
+        <a class="click-me" id="2">Подсчитать</a>
+    </body>
+</html> 
+
