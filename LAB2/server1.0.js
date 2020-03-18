@@ -1,32 +1,16 @@
-/*
-var http = require("http");
-var fs = require("fs");
-
-http.createServer( function(request, response) {
-    console.log("Request received");
-
-    var page = fs.readFileSync('HelloWorld.html');
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write(page);
-    response.end();
-    
-
-
-}).listen(8888);
-*/
-
-var fs = require("fs");
-url = require('url'),
-http = require('http'),
-qs = require('querystring');
+const fs = require("fs");
+const url = require('url');
+const http = require('http');
+const qs = require('querystring');
+const path = require('path');
 
 var server = http.createServer(
     function (request, response) {
         console.log("Request received");
-        if (request.method == 'POST') {
-                console.log("POST");
-                var body = '';
-                request.on('data', function (data) {
+        if (request.method === 'POST') {
+            console.log("POST");
+            let body = '';
+            request.on('data', function (data) {
                     body += data;
                 });
                 
@@ -35,18 +19,18 @@ var server = http.createServer(
                     response.writeHead(200);
                     response.write(
                         JSON.stringify({ 
-                            numberOfSpaces: body.split(' ').length - 1 == 0 ?  "NO" : body.split(' ').length - 1 
+                            numberOfSpaces: body.split(' ').length - 1 === 0 ?  "NO" : body.split(' ').length - 1
                         })
                     );
                     response.end();
                 });
         }
        // else {
-        if (request.method == 'GET') {
+        if (request.method === 'GET') {
             var params = url.parse(request.url);
             console.log("Returned HTML file");
             console.log(params);
-            var page = fs.readFileSync('LAB1.html');
+            const page = fs.readFileSync(path.resolve(__dirname, 'lab1.html'));
             response.writeHead(200, { 'Content-Type': 'text/html' });
             response.write(page);
             response.end();
