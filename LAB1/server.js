@@ -6,6 +6,7 @@ const http = require("http");
 //Подключение модуля для работы с файловой системой
 const fs = require("fs");
 //Создание http-сервера, использующего порт 8888
+
 http.createServer( function(request, response) {
     console.log("Request received");
 //загрузка html страницы из файловой системы
@@ -17,4 +18,5 @@ http.createServer( function(request, response) {
 //отправка ответа
     response.end();
 }).listen(8888);
+
 console.log("Server has started");
