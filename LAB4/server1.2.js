@@ -7,7 +7,7 @@ function start(route, handle) {
     function onRequest(request, response) {
         let pathname = URL.parse(request.url).pathname;
         console.log("Request for " + pathname + " received.");
-        route(handle, pathname, response);
+        route(handle, pathname);
         let page = fs.readFileSync(path.resolve(__dirname, 'Start.html'));
         response.writeHead(200, {'Content-Type': 'text/html'});
         response.write(page);

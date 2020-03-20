@@ -8,6 +8,7 @@
     "runSecondLab": "node ./LAB2/index.js",
     "runFhirdLab": "node ./LAB3/index.js",
     "runFourthLab": "node ./LAB4/index.js",
+    "runFifthLab": "node ./LAB5/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
