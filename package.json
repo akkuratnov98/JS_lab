@@ -9,6 +9,7 @@
     "runFhirdLab": "node ./LAB3/index.js",
     "runFourthLab": "node ./LAB4/index.js",
     "runFifthLab": "node ./LAB5/index.js",
+    "runSixthLab": "node ./LAB6/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,15 @@
   "bugs": {
     "url": "https://github.com/akkuratnov98/JS_lab/issues"
   },
-  "homepage": "https://github.com/akkuratnov98/JS_lab#readme"
+  "homepage": "https://github.com/akkuratnov98/JS_lab#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "canvas": "^2.6.1",
+    "express": "^4.17.1",
+    "fast-average-color": "^6.0.2",
+    "image-js": "^0.21.9",
+    "jquery": "^3.5.0",
+    "node-vibrant": "^3.1.5",
+    "rgbaster": "^2.1.1"
+  }
 }
