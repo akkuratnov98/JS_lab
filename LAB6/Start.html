@@ -6,23 +6,44 @@
         <link rel="icon" href="http://localhost:8888/favicon.ico" type="image/x-icon">
     </head>
     <body>
-    <form action="/upload" method="post">
         Введите название картинки с номером
-        <input name="name" type="text" required pattern="(shark|antelope|macaw)( [1-9])?$"
+        <input id="name" name="name" type="text" required pattern="(shark|antelope|macaw)( [1-9])?$"
                title="Можно ввести только shark, antelope, macaw с цифрой от 1 до 9"/>
         <br/>
         Введите ширину
-        <input name="width" type="text"  min = "100" max = "1500"
+        <input id="width" name="width" type="text"  min = "100" max = "1500"
                title="Диапазон от 100 до 1500 пикселей"/>
         Введите высоту
-        <input name="height" type="text" min = "100" max = "1500"
+        <input id="height" name="height" type="text" min = "100" max = "1500"
                title="Диапазон от 100 до 1500 пикселей"/>
         <br/>
         Значения цвета
-        <input name="colour" type="text"  pattern="(blue|red|green)?$"
+        <input id="colour" name="colour" type="text"  pattern="(blue|red|green)?$"
                title="Можно ввести только blue, red, green"/>
         <br/>
-        <input type="submit" value="Submit"  />
-        </form>
+        <input  class="click-me" id="2" type="submit" value="Submit" />
+    <img id="image">
     </body>
+
+    <script>
+        document.addEventListener('click', function (event)
+        {
+            if (!event.target.matches('.click-me')) return;
+            event.preventDefault();
+            const xhr = new XMLHttpRequest();
+            let param = {
+                name: document.getElementById("name").value,
+                width: document.getElementById("width").value,
+                height: document.getElementById("height").value,
+                colour: document.getElementById("colour").value
+            };
+            xhr.open("POST", "http://localhost:8888/upload", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+             xhr.onload = function() {
+                console.log(xhr.response);
+                 document.getElementById("image").setAttribute('src', 'http://localhost:8888/toSend.jpg')
+             };
+            xhr.send(JSON.stringify(param));
+        }, false);
+    </script>
 </html>

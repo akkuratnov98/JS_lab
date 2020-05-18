@@ -16,5 +16,9 @@ router.post("/upload", (req, res)=>{
     else  requestHandlers.secondHandler(req.body, res);
 });
 
+router.get('/toSend.jpg', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'toSend.png'));
+});
+
 
 module.exports = router;

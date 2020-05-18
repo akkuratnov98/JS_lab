@@ -25,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "canvas": "^2.6.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fast-average-color": "^6.0.2",
     "image-js": "^0.21.9",

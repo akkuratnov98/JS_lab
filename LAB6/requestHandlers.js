@@ -18,8 +18,11 @@ async function firstHandler(body, res) {
         img = img.resize({height: body.height});
     }
 
-    await img.save('toSend.png');
-    res.sendfile('toSend.png');
+    const pathIMG = path.resolve(__dirname,'toSend.png');
+
+    await img.save(pathIMG);
+        res.sendFile(pathIMG);
+    
 }
 
 async function secondHandler(body, res) {
@@ -50,8 +53,10 @@ async function secondHandler(body, res) {
         img = img.resize({height: body.height});
     }
 
-    await img.save('toSend.png');
-    res.sendfile('toSend.png');
+    const pathIMG = path.resolve(__dirname,'toSend.png');
+
+    await img.save(pathIMG);
+    res.sendFile(pathIMG);
 }
 
 function findColor(img){

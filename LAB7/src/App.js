@@ -32,11 +32,10 @@ const reducer = (state, action) => {
 const request = async (state) => {
     let response = await fetch('http://localhost:8888/upload', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json;charset=UTF-8',
         },
-        body: `name=${state.name}&width=${state.width}&height=${state.height}&colour=${state.colour}`
+        body: JSON.stringify(state)
     });
 
     return await response.blob();
@@ -49,8 +48,9 @@ const component = () => {
     const getImage = async (event) => {
         event.preventDefault() && event.stopPropagation();
         const picture = await request(state);
-        console.log(picture);
-        setImage(picture);
+        const urlCreator = window.URL || window.webkitURL;
+        const imageUrl = urlCreator.createObjectURL(picture);
+        setImage(imageUrl);
     };
 
     return(
